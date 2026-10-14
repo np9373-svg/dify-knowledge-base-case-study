@@ -1,0 +1,25 @@
+# This repository uses an allowlist. Working files remain in the directory,
+# but only the public project structure below is tracked by Git.
+*
+
+!.gitignore
+!.gitattributes
+!README.md
+
+!docs/
+!docs/**
+
+!knowledge-base/
+!knowledge-base/**
+
+!research/
+!research/**
+
+!evaluation/
+!evaluation/**
+
+!dify/
+!dify/**
+
+!assets/
+!assets/**

@@ -1,0 +1,475 @@
+app:
+  description: 'Ассистент объяснит что такое Dify '
+  icon: 💬
+  icon_background: '#E1EFFE'
+  icon_type: emoji
+  mode: advanced-chat
+  name: Dify для новичков
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:1.0.7@f36c3761167b3af0bfb4975b728fe3cd126342d076e1ec5359e6d4f92557d3d4
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.2.23@f500332838ed670d0962a4f727618a2eb7e27a453ea56e72a28731f5f383ab72
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: '👋 Привет! Разбираешься с Dify? Давай сэкономим тебе время!
+
+      Необязательно часами читать документацию, разбираться в десятках инструментов
+      и выяснять, чем Dify отличается от других AI-платформ. Просто спроси меня!
+
+
+      🚀 Помогу быстро разобраться:
+
+      - Что умеет Dify, а чего от него ждать не стоит.
+
+      - Когда стоит выбрать Dify, а когда лучше подойдёт n8n или десктоп-агенты.
+
+      - Что доступно бесплатно, какие есть ограничения и на что придётся потратиться.
+
+      - Чем отличаются основные инструменты платформа Workflow, Chatflow и AI-агенты.
+
+      - Какие инструменты подойдут для твоей идеи и с чего разумнее начать.
+
+
+      Есть конкретная задача? Расскажи, что хочешь создать. Вместе разберёмся, подходит
+      ли для этого Dify и какой путь выбрать.
+
+      Спрашивай своими словами — я переведу сложную документацию на человеческий язык.
+      😉'
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - Что вообще можно сделать с помощью Dify?
+    - Что вкладывают в понятие Агент на платформе Dify?
+    - Можно ли создать автономного AI-агента?
+    - Чем отличаются Workflow, Chatflow и AI-агент?
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm_reply-source-answer_node-target
+      selected: false
+      source: llm_reply
+      sourceHandle: source
+      target: answer_node
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: start_node-source-1791969511572-target
+      source: start_node
+      sourceHandle: source
+      target: '1791969511572'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1791969511572-source-llm_reply-target
+      source: '1791969511572'
+      sourceHandle: source
+      target: llm_reply
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        author: Dify
+        desc: ''
+        height: 255
+        selected: false
+        showAuthor: false
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"👋 ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":" Hello, and this is a basic Chatflow!","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"What it does:","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" it''s a chatbot you can actually talk to. Type a message
+          and get a reply. The best part is, it ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"remembers","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" what you said earlier in the same chat.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"This is the second core app to build in Dify. The first template
+          (the Text Summarizer) ran once and stopped. A ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Chatflow","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" keeps a conversation going, round after round.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Try it:","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" click Preview in the top-right and start chatting.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 683
+      height: 255
+      id: note_intro
+      position:
+        x: -31.989527246787816
+        y: -80.45165010175745
+      positionAbsolute:
+        x: -31.989527246787816
+        y: -80.45165010175745
+      selected: false
+      type: custom-note
+      width: 683
+      zIndex: 0
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 73
+      id: start_node
+      position:
+        x: -608.8869619774518
+        y: 275.4285714285715
+      positionAbsolute:
+        x: -608.8869619774518
+        y: 275.4285714285715
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        author: Dify
+        desc: ''
+        height: 206
+        selected: false
+        showAuthor: false
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"1️⃣  ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"The starting point","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"In
+          a chatbot, the user''s messages come straight from the ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"chat
+          box","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":",
+          so there''s nothing to fill in here.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Optional:","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          you can still add inputs (like the user''s name) to collect once before
+          the chat begins.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: yellow
+        title: ''
+        type: ''
+        width: 375
+      height: 206
+      id: note_start
+      position:
+        x: -496.78896400686267
+        y: 484.4749047511076
+      positionAbsolute:
+        x: -496.78896400686267
+        y: 484.4749047511076
+      selected: false
+      type: custom-note
+      width: 375
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1791969511572'
+          - result
+        desc: Think and respond.
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-5.6-terra
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 29b2bd85-3bb4-4854-988d-b4a31adfc3c0
+          role: system
+          text: 'Ты — доброжелательный и компетентный помощник для людей, изучающих
+            платформу Dify.
+
+            Отвечай на русском языке естественно, как в хорошем разговоре с человеком.
+            Объясняй технические понятия понятно, но без чрезмерного упрощения.
+
+
+            Не стремись пересказать весь найденный материал. Выбирай только то, что
+            необходимо для ответа на конкретный вопрос.
+
+            Формируй ответ как связный рассказ или историю; Логические блоки разделяй
+            абзацами. Используй списки и заголовки, когда они действительно помогают,
+            а не по умолчанию.
+
+
+            Используй предоставленные материалы базы знаний как источник фактов, а
+            не как образец стиля. Отвечай по существу вопроса.
+
+            Если в материалах не хватает информации, честно скажи об этом.
+
+
+            Контекст из базы знаний: {{#context#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 116
+      id: llm_reply
+      position:
+        x: 171.20518612214596
+        y: 320
+      positionAbsolute:
+        x: 171.20518612214596
+        y: 320
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        author: Dify
+        desc: ''
+        height: 360
+        selected: false
+        showAuthor: false
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"2️⃣  ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"The brain","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"This is where the AI thinks up its reply. The ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"system prompt","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" inside sets the bot''s personality and rules.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"},{"children":[],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Important note:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"• If you haven''t installed an LLM, please install it.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Make sure Memory is ON","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" here. That''s why this chatbot remembers earlier messages.
+          This is the big difference from a plain workflow.","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Make it yours:","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" edit that prompt to turn this into anything, a coding helper,
+          a travel planner, a study buddy, a support agent, etc.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: yellow
+        title: ''
+        type: ''
+        width: 671
+      height: 360
+      id: note_llm
+      position:
+        x: -31.989527246787816
+        y: 484.4749047511076
+      positionAbsolute:
+        x: -31.989527246787816
+        y: 484.4749047511076
+      selected: false
+      type: custom-note
+      width: 671
+      zIndex: 0
+    - data:
+        answer: '{{#llm_reply.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 103
+      id: answer_node
+      position:
+        x: 860
+        y: 320
+      positionAbsolute:
+        x: 860
+        y: 320
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        author: Dify
+        desc: ''
+        height: 218
+        selected: false
+        showAuthor: false
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"3️⃣  ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"The reply","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"This shows the AI''s answer back in the chat, streaming it
+          out as it''s written. In a Chatflow you finish with an ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Answer","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" node (not an “End” node like in a workflow).","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: yellow
+        title: ''
+        type: ''
+        width: 405
+      height: 218
+      id: note_answer
+      position:
+        x: 769.9089602527386
+        y: 484.4749047511076
+      positionAbsolute:
+        x: 769.9089602527386
+        y: 484.4749047511076
+      selected: false
+      type: custom-note
+      width: 405
+      zIndex: 0
+    - data:
+        author: Dify
+        desc: ''
+        height: 331
+        selected: false
+        showAuthor: false
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"What you can do next","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"• ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Edit the personality","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" in second node.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"• ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Change the opening message","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" and suggested questions in Features which is on the top-right
+          corner, next to Publish button.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"• ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Publish as a web app","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" so anyone can chat with it. Click “Publish” in the top-right.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"},{"children":[],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"💡 ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"Want it to generate answers based on your own documents?","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":" Let''s move on to the next template Knowledge Retrieval
+          to build a chatbot that responds based on your data.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: violet
+        title: ''
+        type: ''
+        width: 672
+      height: 331
+      id: note_next
+      position:
+        x: -31.989527246787816
+        y: 922.870515504233
+      positionAbsolute:
+        x: -31.989527246787816
+        y: 922.870515504233
+      selected: false
+      type: custom-note
+      width: 672
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - MY5YHpqmyymS+csdLKH7HJk+zDcvh8edvZZ1SLUAHZIEvukaErD3Mj+BSx+CLZ6w
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: qwen3-rerank
+            provider: langgenius/tongyi/tongyi
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - start_node
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 90
+      id: '1791969511572'
+      position:
+        x: -212.85714285714283
+        y: 306.4285714285715
+      positionAbsolute:
+        x: -212.85714285714283
+        y: 306.4285714285715
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    viewport:
+      x: -486.9000000000001
+      y: 54.39999999999998
+      zoom: 1.4
+  rag_pipeline_variables: []
