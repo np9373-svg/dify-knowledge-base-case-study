@@ -12,14 +12,13 @@
 !knowledge-base/
 !knowledge-base/**
 
-!research/
-!research/**
-
 !evaluation/
 !evaluation/**
+evaluation/questions.xlsx
 
 !dify/
 !dify/**
 
 !assets/
 !assets/**
+assets/chatflow.png
